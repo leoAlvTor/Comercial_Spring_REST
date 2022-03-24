@@ -18,7 +18,7 @@ public class FacturaDetalle {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private int id;
+    private long id;
     @ManyToOne
     private Producto producto;
     private double cantidad;

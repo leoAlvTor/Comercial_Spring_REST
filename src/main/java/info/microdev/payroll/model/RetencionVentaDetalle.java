@@ -16,7 +16,7 @@ public class RetencionVentaDetalle {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private int id;
+    private Long id;
     private String ejercicioFiscal;
     private double baseImponible;
     private String impuesto;

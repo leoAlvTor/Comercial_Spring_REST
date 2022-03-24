@@ -3,7 +3,6 @@ package info.microdev.payroll.controller;
 import info.microdev.payroll.exceptions.EmployeeNotFoundException;
 import info.microdev.payroll.model.Employee;
 import info.microdev.payroll.repository.EmployeeRepository;
-import org.springframework.expression.ExpressionException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
