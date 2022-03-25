@@ -16,43 +16,13 @@ public class EmpleadoController {
         this.empleadoRepository = empleadoRepository;
     }
 
-    @GetMapping("/empleados")
-    public List<Empleado> all(){
-        return empleadoRepository.findAll();
-    }
+    /*
+    Authentication method based on username and password
+     */
 
-    @PostMapping("/empleados")
-    public Empleado newEmpleado(@RequestBody Empleado empleado){
-        return empleadoRepository.save(empleado);
-    }
-
-    // TODO: Add a throwable exception
-    @GetMapping("/empleados/{id}")
-    public Empleado one(@PathVariable String id){
-        return empleadoRepository.findById(id).orElseThrow(()-> new ExpressionException("Not found!"));
-    }
-
-    @PutMapping("/empleados/{id}")
-    public Empleado replaceEmpleado(@RequestBody Empleado newEmpleado, @PathVariable String id){
-        return empleadoRepository.findById(id)
-                .map(empleado -> {
-                    empleado.setPassword(newEmpleado.getPassword());
-                    empleado.setNombre(newEmpleado.getNombre());
-                    empleado.setTitulo(newEmpleado.getTitulo());
-                    empleado.setTelefono(newEmpleado.getTelefono());
-                    empleado.setDireccion(newEmpleado.getDireccion());
-                    empleado.setMaquinaAsignada(newEmpleado.getMaquinaAsignada());
-                    empleado.setIndexActual(newEmpleado.getIndexActual());
-                    empleado.setRangoInicial(newEmpleado.getRangoInicial());
-                    empleado.setRangoFinal(newEmpleado.getRangoFinal());
-                    return empleadoRepository.save(empleado);
-                })
-                .orElseGet(Empleado::new);
-    }
-
-    @DeleteMapping("/empleados/{id}")
-    public void replaceEmpleado(@PathVariable String id){
-        empleadoRepository.deleteById(id);
+    @PostMapping("/empleados/login")
+    public Empleado login(@RequestBody Empleado empleadoBusqueda){
+        return empleadoRepository.findByUserAndPassword(empleadoBusqueda.getCedula(), empleadoBusqueda.getPassword()).orElseGet(Empleado::new);
     }
 
 }
