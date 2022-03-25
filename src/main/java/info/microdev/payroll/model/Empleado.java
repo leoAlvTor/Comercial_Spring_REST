@@ -27,5 +27,6 @@ public class Empleado {
     @OneToMany(
             mappedBy = "empleado"
     )
+    @ToString.Exclude
     private List<FacturaCabecera> facturaCabeceraList;
 }

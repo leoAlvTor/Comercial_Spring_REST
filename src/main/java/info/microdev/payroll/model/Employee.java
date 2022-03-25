@@ -22,11 +22,6 @@ public class Employee {
     private String name;
     private String role;
 
-    public Employee(String name, String role){
-        this.name = name;
-        this.role = role;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

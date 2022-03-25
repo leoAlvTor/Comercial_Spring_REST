@@ -3,6 +3,7 @@ package info.microdev.payroll.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CompraCabecera {
     private String autorizacion;
     private String numeroFactura;
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar fecha;
+    private Calendar fecha;
     private String formaPago;
     @ManyToOne
     private Proveedor proveedor;
@@ -26,6 +27,7 @@ public class CompraCabecera {
             mappedBy = "compraCabecera",
             cascade = {CascadeType.ALL}
     )
+    @ToString.Exclude
     private List<CompraDetalle> compraDetalleList;
     private String plazo;
     private double abono;

@@ -3,7 +3,7 @@ package info.microdev.payroll.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,7 +20,7 @@ public class Producto {
     private String nombre;
     private String nombrePrincipal;
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar fecha;
+    private Calendar fecha;
     @ManyToOne
     private Proveedor proveedor;
     @OneToMany(

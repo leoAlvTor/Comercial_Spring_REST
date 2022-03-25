@@ -3,7 +3,7 @@ package info.microdev.payroll.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,7 +20,7 @@ public class FacturaCabecera {
     private Cliente cliente;
     private String tipo;
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar gregorianCalendar;
+    private Calendar gregorianCalendar;
     private double subtotal;
     private double subtotal0;
     private double iva;
@@ -36,6 +36,7 @@ public class FacturaCabecera {
             mappedBy = "facturaCabecera",
             cascade = {CascadeType.PERSIST}
     )
+    @ToString.Exclude
     private List<FacturaDetalle> facturaDetalleList;
     @OneToOne
     private RetencionVentaCabecera retencionVentaCabecera;

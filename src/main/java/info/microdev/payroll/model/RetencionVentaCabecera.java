@@ -3,7 +3,7 @@ package info.microdev.payroll.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,13 +18,14 @@ public class RetencionVentaCabecera {
     public String numero;
     private String autorizacion;
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar fechaEmision;
+    private Calendar fechaEmision;
     private String tipoComprobante;
     @OneToOne
     public FacturaCabecera facturaCabecera;
     @OneToMany(
             mappedBy = "retencionVentaCabecera"
     )
+    @ToString.Exclude
     private List<RetencionVentaDetalle> retencionVentaDetalles;
 
 }

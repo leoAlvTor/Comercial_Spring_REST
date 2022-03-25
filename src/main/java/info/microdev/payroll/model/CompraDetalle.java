@@ -3,6 +3,7 @@ package info.microdev.payroll.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class CompraDetalle {
     private double precioVentaCaja;
     private String tarifa;
     @Temporal(TemporalType.DATE)
-    private GregorianCalendar fechaVencimiento;
+    private Calendar fechaVencimiento;
     private char representacion;
     private int dummy;
 
