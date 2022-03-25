@@ -35,7 +35,6 @@ public class ProductoController {
     public Producto replaceProducto(@RequestBody Producto newProducto, @PathVariable String id){
         return productoRepository.findById(id)
                 .map(producto -> {
-                    producto.setCodigo(newProducto.getCodigo());
                     producto.setCodigoPrincipal(newProducto.getCodigoPrincipal());
                     producto.setNombre(newProducto.getNombre());
                     producto.setNombrePrincipal(newProducto.getNombrePrincipal());
@@ -56,7 +55,10 @@ public class ProductoController {
                     producto.setPrecioVentaCaja(newProducto.getPrecioVentaCaja());
                     producto.setPrecioVentaUnidad(newProducto.getPrecioVentaUnidad());
                     return productoRepository.save(producto);
-                }).orElseGet(Producto::new);
+                }).orElseGet(()->{
+                    newProducto.setCodigo(id);
+                    return productoRepository.save(newProducto);
+                });
     }
 
     @DeleteMapping("/productos/{id}")
