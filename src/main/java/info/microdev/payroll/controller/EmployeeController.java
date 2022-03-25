@@ -26,7 +26,6 @@ public class EmployeeController {
         return employeeRepository.save(employee);
     }
 
-    // TODO Add new throwable exception.
     @GetMapping("/employees/{id}")
     public Employee one(@PathVariable Long id) {
         return employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
